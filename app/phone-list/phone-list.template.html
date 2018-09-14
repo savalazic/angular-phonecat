@@ -1,0 +1,29 @@
+<div class='container-fluid'>
+  <div class='row'>
+    <div class='col-md-2'>
+      <p>
+        Search: <input type='text' ng-model='$ctrl.query' />
+      </p>
+      <p>
+        Sort by:
+        <select ng-model='$ctrl.orderProp'>
+          <option value='name'>Name</option>
+          <option value='age'>Release Date</option>
+        </select>
+      </p>
+    </div>
+    <div class='col-md-10'>
+      <p>Search term: {{ $ctrl.query }}</p>
+      <p>Order by: {{ $ctrl.orderProp }}</p>
+      <ul>
+        <li ng-repeat="phone in $ctrl.phones | orderBy:$ctrl.orderProp | filter:$ctrl.query as filteredPhones">
+          <span>{{ phone.name }}</span>
+          <p>{{ phone.snippet }}</p>
+          <p>{{ $ctrl.currentYear - phone.age }}</p>
+        </li>
+      </ul>
+      <p>Number of phones: {{ filteredPhones.length }}</p>
+    </div>
+  </div>
+
+</div>
