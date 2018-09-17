@@ -15,15 +15,21 @@
     <div class='col-md-10'>
       <p>Search term: {{ $ctrl.query }}</p>
       <p>Order by: {{ $ctrl.orderProp }}</p>
-      <ul>
-        <li ng-repeat="phone in $ctrl.phones | orderBy:$ctrl.orderProp | filter:$ctrl.query as filteredPhones">
-          <span>{{ phone.name }}</span>
-          <p>{{ phone.snippet }}</p>
+      <ul class="phones">
+        <li ng-repeat="phone in $ctrl.phones | orderBy:$ctrl.orderProp | filter:$ctrl.query as filteredPhones" class="thumbnail">
+          <a href="#!/phones/{{phone.id}}" class="thumb">
+            <img ng-src='{{ phone.imageUrl }}' alt='{{ phone.name }}'>
+          </a>
+          <a href='#!/phones/{{phone.id}}'>{{phone.name}}</a>
           <p>{{ $ctrl.currentYear - phone.age }}</p>
         </li>
       </ul>
       <p>Number of phones: {{ filteredPhones.length }}</p>
     </div>
   </div>
+
+  <pre>
+    {{ $ctrl.phones | filter:$ctrl.query | orderBy:$ctrl.orderProp | json }}
+  </pre>
 
 </div>

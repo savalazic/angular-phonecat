@@ -11,7 +11,7 @@ angular
 
       $http.get('phones/phones.json')
         .then((response) => {
-          this.phones = response.data;
+          this.phones = response.data.slice(0, 5);
         });
     }
   });
