@@ -2,16 +2,14 @@ angular
   .module('phoneList')
   .component('phoneList', {
     templateUrl: 'phone-list/phone-list.template.html',
-    controller: function PhoneListController($http) {
-      console.log(this);
+    controller: ['Phone',
+      function PhoneListController(Phone) {
+        console.log(this);
 
-      this.phones = [];
-      this.orderProp = 'age';
-      this.currentYear = new Date().getFullYear();
-
-      $http.get('phones/phones.json')
-        .then((response) => {
-          this.phones = response.data.slice(0, 5);
-        });
-    }
+        this.phones = Phone.query();
+        
+        this.orderProp = 'age';
+        this.currentYear = new Date().getFullYear();
+      }
+    ]
   });

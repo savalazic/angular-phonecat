@@ -1,12 +1,36 @@
-<img ng-src="{{$ctrl.phone.images[0]}}" class="phone">
+<img ng-src="{{$ctrl.mainImageUrl}}" class="phone">
 
-<h1>{{$ctrl.phone.name}}</h1>
+<a class="back-button" href="#!/phones">Back to home</a>
+
+<h1>{{$ctrl.phone.name | uppercase}}</h1>
 
 <p>{{$ctrl.phone.description}}</p>
 
 <ul class="phone-thumbs">
-  <li ng-repeat="img in $ctrl.phone.images">
+  <li ng-repeat="img in $ctrl.phone.images" ng-mouseover="$ctrl.setImage(img)" ng-dblclick="$ctrl.downloadImage(img)">
     <img ng-src="{{img}}">
+  </li>
+</ul>
+<em>Double click on image to download it</em>
+
+<dl>
+  <dt>Infrared</dt>
+  <dd>{{$ctrl.phone.connectivity.infrared | checkmark}}</dd>
+  <dt>GPS</dt>
+  <dd>{{$ctrl.phone.connectivity.gps | checkmark}}</dd>
+</dl>
+
+<ul class="specs">
+  <li>
+    <span>Availability and Networks</span>
+    <dl>
+      <dt>Availability</dt>
+      <dd ng-repeat="availability in $ctrl.phone.availability">{{availability}}</dd>
+    </dl>
+  </li>
+  <li>
+    <span>Additional Features</span>
+    <dd>{{$ctrl.phone.additionalFeatures}}</dd>
   </li>
 </ul>
 
