@@ -16,7 +16,7 @@
       <p>Search term: {{ $ctrl.query }}</p>
       <p>Order by: {{ $ctrl.orderProp }}</p>
       <ul class="phones">
-        <li ng-repeat="phone in $ctrl.phones | orderBy:$ctrl.orderProp | filter:$ctrl.query as filteredPhones" class="thumbnail">
+        <li ng-repeat="phone in $ctrl.phones | orderBy:$ctrl.orderProp | filter:$ctrl.query as filteredPhones" class="thumbnail phone-list-item">
           <a href="#!/phones/{{phone.id}}" class="thumb">
             <img ng-src='{{ phone.imageUrl }}' alt='{{ phone.name }}'>
           </a>
